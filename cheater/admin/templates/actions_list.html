@@ -1,0 +1,8 @@
+{% extends "admin_layout.html" %}
+
+{% block content %}
+<ul>
+  <li><a href="{{ url_for('index') }}">View cheats</a></li>
+  <li><a href="{{ url_for('admin.add') }}">Add new cheat</a></li>
+</ul>
+{% endblock %}

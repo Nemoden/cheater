@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <a href="{{ url_for('index') }}">Cheats home</a>
+  <h1>{{ cheat.name }}
+    {% if 'logged_in' in session %}
+      [ <a href='{{ url_for('admin.edit', slug = cheat.slug) }}'>Edit</a> ]
+    {% endif %}
+  </h1>
+  {{ cheat.html|safe }}
+{% endblock %}

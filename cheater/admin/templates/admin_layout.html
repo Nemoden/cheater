@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {% block title %}Cheater admin{% endblock %}
+    </title>
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('admin.static', filename='style.css') }}" />
+    <link rel="stylesheet" type="text/css" media="all" href="{{ url_for('static', filename='codehilite.css') }}" />
+  </head>
+  <body id='main'>
+
+  {% block header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block footer %}
+  {% endblock %}
+
+  </body>
+</html>

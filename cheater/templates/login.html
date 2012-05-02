@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% from "_macros.html" import render_field %}
+{% block content %}
+<form method='post' action='{{ url_for("login") }}'>
+  <div>
+    {{ form.username.label }} :
+    {{ render_field(form.username) }}
+  </div>
+  <div>
+    {{ form.password.label }} :
+    {{ render_field(form.password) }}
+  </div>
+  <div>
+    {{ form.submit }}
+  </div>
+</form>
+{% endblock %}

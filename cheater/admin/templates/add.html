@@ -1,0 +1,31 @@
+{% extends "admin_layout.html" %}
+{% from "_macros.html" import render_field %}
+
+{% block content %}
+<form name="add-cheat" method="post" action="{{ url_for('admin.add') }}">
+  <div>
+    <h3>{{ form.name.label }}</h3> 
+  <div>
+  <div>
+    {{ render_field(form.name, { 'class' : 'bigtext' }) }}
+  </div>
+  <div>
+    <h3>{{ form.cheat.label }}</h3>
+  </div>
+  <div>
+    {{ render_field(form.cheat, { 'class' : 'bigtext', 'rows' : 20, 'cols':'80'}) }} 
+  </div>
+  <div>
+    {{ form.submit(class='bigbutton') }} {{ form.preview(class='bigbutton') }}
+  </div>
+</form>
+
+<div class='cheat'>
+  {% if preview %}
+    <h2>Preview</h2>
+    <div class='preview'>
+    {{ preview|safe }}
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

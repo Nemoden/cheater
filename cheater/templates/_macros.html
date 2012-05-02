@@ -1,0 +1,31 @@
+{% macro render_field(field,args={}) %}
+  {% if not field.errors %}
+    {{ field(**args) }}
+  {% else %}
+
+    {# 
+      this is a messy way to update args 
+      to add "error" class to args.class 
+    #}
+    {% if args.class %}
+      {% set proper_class = dict(class='error ' + args.class) %}
+      {% set fake = args.update(proper_class) %}
+      {#
+        we cannot use pure python here, e.g. we can not 
+        just update a dict,
+        BUT we can assign result of dict.update to a fake variable.
+
+        Don't do that though, 
+        I do this because I'm a very bad person
+        You know,... we can do pretty much anything
+      #}
+    {% endif %}
+
+    {{ field(**args) }}
+    {% for error in field.errors %}
+    <div class='error'>
+      {{ error }}
+    </div>
+    {% endfor %}
+  {% endif %}
+{% endmacro %}

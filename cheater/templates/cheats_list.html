@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+  {% if cheats %}
+  <ul>
+    {% for name, slug in cheats %}
+    <li><a href="{{ url_for('show_cheat', slug=slug) }}">{{ name }}</a>
+    {% if session.logged_in %}
+      [ <a href="{{ url_for('admin.edit', slug = slug) }}">Edit</a> ]
+      [ <a href="{{ url_for('admin.delete', slug = slug) }}">Delete</a> ]
+    {% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <em>No cheats so far</em>
+  {% endif %}
+{% endblock %}

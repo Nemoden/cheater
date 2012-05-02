@@ -1,0 +1,40 @@
+body {
+  font-family: Halvetica;
+  font-size: 1.1em;
+}
+
+.bigtext {
+  font-size: 1.5em;
+}
+
+.bigbutton {
+  font-size: 1.8em;
+}
+
+h1,h2,h3 {
+  font-family: Didot, Bodoni;
+}
+
+h1 {
+  font-size: 2.0em;
+}
+h3 {
+  font-size: 1.8em;
+}
+h3 {
+  font-size: 1.6em;
+}
+
+textarea {
+  font-family: Consolas, Monaco, "DejaVu Sans Mono";
+  font-size: 1.2em;
+}
+
+textarea.error, input.error { 
+  border: 3px solid red;
+  background-color: #fdc;
+}
+
+.error {
+  color:red;
+}
