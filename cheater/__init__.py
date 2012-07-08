@@ -12,10 +12,10 @@ app.secret_key = 'debugging'
 @app.route('/')
 def index():
   from .models import Cheat
-  from .database import session, select
+  from .database import session as dbsession, select
   cheats = Cheat.__table__
   s = select([cheats.c.name, cheats.c.slug])
-  cheats = session.execute(s).fetchall()
+  cheats = dbsession.execute(s).fetchall()
   return render_template("cheats_list.html", cheats = cheats)
 
 @app.route('/login/', methods=['GET', 'POST'])
@@ -58,6 +58,11 @@ def not_found(status):
   response = make_response(render_template('404.html'))
   response.status_code = 404
   return response
+
+@app.teardown_request
+def teardown(response):
+  from .database import session as dbsesssion
+  dbsession.close()
 
 if __name__ == "__main__":
   app.run(debug = True)

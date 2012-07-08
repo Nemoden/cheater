@@ -2,6 +2,12 @@ from cheater.database import *
 from cheater.helpers import slugify
 
 class Cheat(Base):
+  """
+  Cheat
+  ~~~~
+
+  `meth`:__init__(name, cheat)
+  """
 
   __tablename__ = 'cheats'
 
@@ -37,7 +43,6 @@ class Cheat(Base):
   def __repr__(self):
     return "Cheat<%s>" % self.name
 
-
 class User(Base): 
 
   __tablename__ = 'users'
@@ -54,7 +59,7 @@ class User(Base):
   @password.setter
   def set_password(self, password):
     from hashlib import md5
-    self._password = md5(password).digest() 
+    self._password = md5(password).hexdigest() 
 
   def __init__(self, username, password, role):
     self.username = username
