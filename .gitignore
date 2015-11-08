@@ -6,3 +6,5 @@ dist
 build
 *.egg
 *.egg-info
+cheater.sublime-project
+cheater.sublime-workspace
